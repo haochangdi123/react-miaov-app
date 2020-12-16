@@ -42,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "better-scroll": "^2.0.6"
+    "better-scroll": "^2.0.6",
+    "http-proxy-middleware": "^1.0.6",
+    "qs": "^6.9.4"
   }
 }
