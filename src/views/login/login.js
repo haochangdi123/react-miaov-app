@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { verify } from '../../api/index'
-import login from '../../store/action/login'
 import { withRouter } from 'react-router-dom'   // 加入路由信息
 import { useBack } from '../../hooks'
+import login from '../../store/action/login'
+import logo from '../../assets/images/user_img.png'
 
 function LoginBox(props) {
     const [user,setUser] = useState('')
@@ -35,7 +36,7 @@ function LoginBox(props) {
     return (
         <div className="login_box">
             <figure className="loginImg">
-                {/* <img src={logo}></img> */}
+                <img src={logo}></img>
                 <figcaption>如有账号,请直接登录</figcaption>
             </figure>
             <div className="login_from">
