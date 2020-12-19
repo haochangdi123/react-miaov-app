@@ -1,8 +1,16 @@
 import { Login } from '../../api/index'
-function login() {
+function login({username,password,verify}) {
     return function(dispatch) {
-        Login().then((res) => {
-            console.log(res);
+        return Login(username,password,verify).then((res) => {
+            // 登陆成功
+            if (res.data.code === 0) {
+                // 更改redux中的login
+                dispatch({
+                    type: 'LOGIN',
+                    user: username
+                })
+            }
+            return res.data
         })
     }
 }

@@ -1,12 +1,34 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import { verify } from '../../api/index'
+import login from '../../store/action/login'
 
-function LoginBox() {
+function LoginBox(props) {
     const [user,setUser] = useState('')
     const [password,setPasword] = useState('')
     const [vcode,setVcode] = useState('')
     const [vcodeShow, setvcodeShow] = useState(false)
     const [vcodeSrc, setvcodeSrc] = useState(`${verify}?${Date.now()}`)
+
+    function loginFn() {
+        props.dispatch(login({
+            username: user,
+            password: password,
+            verify: vcode
+        })).then((res) => {
+            alert(res.msg)
+            setTimeout(() => {
+                // 登陆失败
+                if (res.code !== 0) {
+                    // 更新验证码
+                    setvcodeSrc(`${verify}?${Date.now()}`)
+                } else {
+
+                }
+            },200)
+        })
+    }
+
     return (
         <div className="login_box">
             <figure className="loginImg">
@@ -45,7 +67,6 @@ function LoginBox() {
                         }}
                         onFocus={() => {
                             setvcodeShow(true)
-                            console.log(vcodeSrc);
                         }}
                     ></input>
                     {
@@ -62,7 +83,9 @@ function LoginBox() {
                     }
                     
                 </p>
-                <button className="login_but"
+                <button
+                    className="login_but"
+                    onClick={loginFn}
                 >登录</button>
                 <p className="login_txt">
                     没有账号? <a onClick={() => {
@@ -73,4 +96,4 @@ function LoginBox() {
     )
 }
 
-export default LoginBox
+export default  connect(res=> {return res})(LoginBox)
