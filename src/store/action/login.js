@@ -1,7 +1,7 @@
-import HTTP from './http';
+import { Login } from '../../api/index'
 function login() {
     return function(dispatch) {
-        HTTP.post('user/login').then((res) => {
+        Login().then((res) => {
             console.log(res);
         })
     }
