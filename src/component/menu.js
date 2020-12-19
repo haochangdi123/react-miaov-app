@@ -1,7 +1,8 @@
 import React from 'react'
+// import './index.css'
 
 function Menu() {
-    let txt = ''
+    let txt = true
     return (
         <nav className={"menus " + (txt ? "unshow" : "show")}>
             <a to='/home' className="iconfont icon-home active">首页</a>

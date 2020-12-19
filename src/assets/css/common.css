@@ -23,6 +23,12 @@
   background: url("../images/icon_menu.png") no-repeat;
   background-size: 100% 100%;
 }
+.show{
+    transform: translateX(0rem);
+}
+.unshow{
+    transform: translateX(-4rem);
+}
 .logo {
   width: 2.44rem;
   height: 0.58666667rem;
