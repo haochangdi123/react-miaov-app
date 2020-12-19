@@ -1,19 +1,6 @@
 import { logDOM } from '@testing-library/react'
 import React from 'react'
-import http from '../../store/action/http'
 function Header() {
-    // 测试http效果
-    http.post(
-        '/lecturer/lists?page=1&rows=20',
-        {
-            order: 'desc',
-            sort: 'id',
-            category_id: 1,
-            recommend: 1
-        }
-    ).then((res) => {
-        console.log(res);
-    })
     return (
         <header id="header">
             <nav className="menu">
