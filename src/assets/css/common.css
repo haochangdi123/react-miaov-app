@@ -54,6 +54,7 @@
   z-index: 1;
   padding-top: 1.2rem;
   min-height: 12.82666667rem;
+  transition: 0.5s;
 }
 #footer {
   background: #323436;
@@ -143,3 +144,78 @@
   border-top: 1px solid rgba(255, 255, 255, .3);
 }
 
+.menus {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 1.2rem .5rem;
+    width: 3.5rem;
+    height: 100vh;
+    background: url("../../assets/images//menu.png") no-repeat;
+    background-size: cover;
+    z-index: 998;
+    transition: .5s transform;
+}
+.show{
+    transform: translateX(0rem);
+}
+.unshow{
+    transform: translateX(-3.5rem);
+}
+
+.menus a {
+    display: block;
+    font: .2rem/.9rem "宋体";
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    color: rgba(255, 255, 255, .8);
+}
+/* .header-btn-left{
+    width: 1rem;
+    height: 1rem;
+} */
+.menus a:before {
+    font-size: .4rem;
+    margin: 0 .1rem;
+    color: rgba(255, 255, 255, .6);
+    vertical-align: middle;
+}
+
+.menus a:first-child {
+    border-top: 1px solid rgba(255, 255, 255, .3);
+}
+
+.menu{
+    display: flex;
+}
+.menu a{
+    font-size: .5rem;
+    color: rgba(255, 255, 255, .8)
+}
+.header-btn-right{
+    float: right;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    width: 1.5rem;
+}
+.header-user{
+    margin-top: -0.5rem;
+    font-size: 0.4rem;
+    color: rgba(255, 255, 255, .8);
+    display: block;
+}
+.header-logout-btn{
+    background: #323436;
+    width: 1.2rem;
+    height: 0.6rem;
+    font-size: 0.3rem;
+    margin-top: -0.3rem;
+    position: absolute;
+    top: 1.2rem;
+    right: 0rem;
+    text-align: center;
+    line-height: 0.6rem;
+    color: white;
+    
+}

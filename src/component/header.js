@@ -41,7 +41,7 @@ function GetUser(path,user,props,isBtnShow,setBtnShow) {
 function Header(props) {
     const path = props.location.pathname
     const back = useBack(props.history)
-    const { user } = props
+    const { user, changeMenu } = props
     const [isBtnShow,setBtnShow] = useState(false)
 
    
@@ -59,7 +59,7 @@ function Header(props) {
                 {
                     path === '/login' 
                     ? <a className="header-btn-left iconfont icon-back" onClick={goBack}>back</a>
-                    : <a className="header-btn-left iconfont icon-hycaidan" ></a>
+                    : <a className="header-btn-left iconfont icon-hycaidan" onClick={()=>changeMenu() }></a>
                 }
             </nav>
             <h1 className="logo">miaov.com</h1>
