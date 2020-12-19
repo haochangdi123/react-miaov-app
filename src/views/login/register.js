@@ -1,45 +1,36 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import { verify } from '../../api/index'
-import { withRouter } from 'react-router-dom'   // 加入路由信息
-import { useBack } from '../../hooks'
-import login from '../../store/action/login'
-import logo from '../../assets/images/user_img.png'
+import { connect } from 'react-redux'
+import RegisterFn from '../../store/action/register'
 
-function LoginBox(props) {
+function RegisterBox(props) {
     const [user,setUser] = useState('')
     const [password,setPasword] = useState('')
+    const [repassword,setReasword] = useState('')
     const [vcode,setVcode] = useState('')
     const [vcodeShow, setvcodeShow] = useState(false)
     const [vcodeSrc, setvcodeSrc] = useState(`${verify}?${Date.now()}`)
-    const back = useBack(props.history)
 
-    function loginFn() {
-        console.log('iiiiiiiii')
-        props.dispatch(login({
-            username: user,
-            password: password,
-            verify: vcode
-        })).then((res) => {
-            alert(res.msg)
-            setTimeout(() => {
-                // 登陆失败
-                if (res.code !== 0) {
-                    // 更新验证码
-                    setvcodeSrc(`${verify}?${Date.now()}`)
-                } else {
-                    back()
-                }
-            },200)
+    function register() {
+        props.dispatch(
+            RegisterFn({
+                verify: vcode,
+                username: user,
+                password,
+                repassword
+            })
+        ).then(res => {
+            if (res.code === 0) {
+               props.setDeg(0)
+            } else {
+               alert(res.msg)
+            }
         })
+        
     }
-
     return (
-        <div className="login_box">
-            <figure className="loginImg">
-                <img src={logo}></img>
-                <figcaption>如有账号,请直接登录</figcaption>
-            </figure>
+        <div className="register_box">
+            <h3>注册账号</h3>
             <div className="login_from">
                 <p>
                     <input
@@ -48,7 +39,6 @@ function LoginBox(props) {
                         value={user}
                         onChange={(e) => {
                             setUser(e.target.value)
-                            console.log(user);
                         }}
                     ></input>
                 </p>
@@ -59,6 +49,16 @@ function LoginBox(props) {
                         value={password}
                         onChange={(e) => {
                             setPasword(e.target.value)
+                        }}
+                    ></input>
+                </p>
+                <p>
+                     <input
+                        placeholder='请输入密码'
+                        type='password'
+                        value={repassword}
+                        onChange={(e) => {
+                            setReasword(e.target.value)
                         }}
                     ></input>
                 </p>
@@ -90,17 +90,19 @@ function LoginBox(props) {
                 </p>
                 <button
                     className="login_but"
-                    onClick={loginFn}
-                >登录</button>
+                    onClick={register}
+                >马上注册</button>
                 <p className="login_txt">
-                    没有账号?
+                    已有账号?
                     <a onClick={() => {
-                        props.setDeg(180)
-                    }}>立即注册</a>
+                        props.setDeg(0)
+                    }}>立即登录</a>
                 </p>
             </div>
         </div>
     )
 }
 
-export default  connect(res=> {return res})(withRouter(LoginBox))
+export default connect(res=> {
+    return res
+})(RegisterBox)
