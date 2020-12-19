@@ -1,5 +1,7 @@
 import { logDOM } from '@testing-library/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 function Header() {
     return (
         <header id="header">
@@ -7,7 +9,7 @@ function Header() {
                <a href="#">导航</a>
             </nav>
             <h1 className="logo">miaov.com</h1>
-            <h1 className="user">miaov.com</h1>
+            <Link className="user" to="/login"></Link>
         </header>
     )
 }

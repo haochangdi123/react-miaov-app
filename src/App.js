@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter } from 'react-router-dom'
 
 import IndexRouter from './router/index'
-import Frame from './common/component/frame'
+import Frame from './component/frame'
 
 function App() {
   return (

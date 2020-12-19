@@ -7,9 +7,8 @@
                 if (width > 768) { // 最大宽度
                         width = 768;
                 }
-                var rem = width / 10;
+                var rem = width / 375 * 37.5;
                 docEl.style.fontSize = rem + 'px';
-                ///rem用font-size:50px来进行换算
         }
 
         win.addEventListener('resize', function () {
