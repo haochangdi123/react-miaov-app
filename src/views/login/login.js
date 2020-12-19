@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { verify } from '../../api/index'
 
 function LoginBox() {
     const [user,setUser] = useState('')
     const [password,setPasword] = useState('')
     const [vcode,setVcode] = useState('')
+    const [vcodeShow, setvcodeShow] = useState(false)
+    const [vcodeSrc, setvcodeSrc] = useState(`${verify}?${Date.now()}`)
     return (
         <div className="login_box">
             <figure className="loginImg">
@@ -40,7 +43,24 @@ function LoginBox() {
                         onChange={(e) => {
                             setVcode(e.target.value)
                         }}
+                        onFocus={() => {
+                            setvcodeShow(true)
+                            console.log(vcodeSrc);
+                        }}
                     ></input>
+                    {
+                        vcodeShow 
+                            ? <img
+                                className="verify"
+                                src={vcodeSrc}
+                                onClick={() => {
+                                    setvcodeSrc(`${verify}?${Date.now()}`)
+                                }}
+                                alt=""
+                              ></img>
+                            : ''
+                    }
+                    
                 </p>
                 <button className="login_but"
                 >登录</button>

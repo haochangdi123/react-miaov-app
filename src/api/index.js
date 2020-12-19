@@ -62,7 +62,7 @@ export const cancelGood=(goodid,article_id)=>{
   return ajax(BASE + '/lecturer/good',{goodid,article_id},'POST')
 }
 
-//验证码
-export const verify=()=>{
-  return ajax(BASE + '/user/verify','POST')
-}
+//验证码图片   了避免缓存使用时加时间戳
+//获取图片时，后台会在浏览器的cookie中设置PHPSESSID，以便我们校验验证码
+export const verify = `miaov/user/verify`
+ 
