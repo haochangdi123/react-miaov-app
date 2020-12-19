@@ -16,7 +16,7 @@ export const Login=(verify,username,password)=>{
 }
 
 /*
-  退出登录1232
+  退出登录
 */
 export const Logout=()=>{
   return ajax(BASE + '/user/login','POST')

@@ -1,5 +1,4 @@
 import React from 'react'
-// import './index.css'
 
 function Menu() {
     let txt = true
