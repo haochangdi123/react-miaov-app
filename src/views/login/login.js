@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { verify } from '../../api/index'
 import login from '../../store/action/login'
+import { withRouter } from 'react-router-dom'   // 加入路由信息
+import { useBack } from '../../hooks'
 
 function LoginBox(props) {
     const [user,setUser] = useState('')
@@ -9,6 +11,7 @@ function LoginBox(props) {
     const [vcode,setVcode] = useState('')
     const [vcodeShow, setvcodeShow] = useState(false)
     const [vcodeSrc, setvcodeSrc] = useState(`${verify}?${Date.now()}`)
+    const back = useBack(props.history)
 
     function loginFn() {
         props.dispatch(login({
@@ -23,7 +26,7 @@ function LoginBox(props) {
                     // 更新验证码
                     setvcodeSrc(`${verify}?${Date.now()}`)
                 } else {
-
+                    back()
                 }
             },200)
         })
@@ -96,4 +99,4 @@ function LoginBox(props) {
     )
 }
 
-export default  connect(res=> {return res})(LoginBox)
+export default  connect(res=> {return res})(withRouter(LoginBox))
