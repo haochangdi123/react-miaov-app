@@ -1,9 +1,9 @@
 function work(state={
     data: {},
-    loading: false
+    loading: true
 },action) {
     switch (action.type) {
-        case "WORK_LOAD":
+        case "RSET_LOAD":
            return {
                data: {},
                loading: true

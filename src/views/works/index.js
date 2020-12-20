@@ -8,6 +8,12 @@ function Work(props) {
     console.log(data, loading);
     useEffect(() => {
         dispatch(getWork(id))
+        // 因为此页面是work详情页，会多次使用，所以离开页面就重置loading，这样就不用在action在请求数据前先设置loading：true了
+        return ()=> {
+            dispatch({
+                type: "RSET_LOAD"
+            })
+        }
     }, [])
     return (
         <div>
