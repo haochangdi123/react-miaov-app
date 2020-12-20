@@ -40,7 +40,7 @@ const routerList = [
     },
     {
         name: '作品详情',
-        path: '/works',
+        path: '/work/:id',
         exact: true, //精确匹配
         render(props) {
             return <Works {...props}/>

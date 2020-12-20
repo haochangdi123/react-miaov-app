@@ -1,6 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {connect} from 'react-redux'
+import getWork from  '../../store/action/getWork'
 
-function Work() {
+function Work(props) {
+    let { data, loading, dispatch, match } = props
+    let { id } = match.params
+    console.log(data, loading);
+    useEffect(() => {
+        dispatch(getWork(id))
+    }, [])
     return (
         <div>
             work
@@ -8,4 +16,4 @@ function Work() {
     )
 }
 
-export default Work
+export default  connect(state=> ({...state.work}))(Work)
