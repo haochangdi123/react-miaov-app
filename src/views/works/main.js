@@ -1,6 +1,7 @@
 import React from 'react'
 import Artic from './artic'
 import Good from './good'
+import MessagList from './messagList'
  
 function Mian (props) {
     let  { data } = props
@@ -22,6 +23,7 @@ function Mian (props) {
             </div>
             <div className="miiaov_comment">
                 <Good id={data.id} goodNum={data.good}></Good>
+                <MessagList></MessagList>
             </div>
         </div>
     )

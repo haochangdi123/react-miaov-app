@@ -37,9 +37,9 @@ export const getInfo=(article_id)=>{
   return ajax(BASE + '/lecturer/info',{article_id},'POST')
 }
 
-//留言
-export const getComment=(article_id)=>{
-  return ajax(BASE + '/lecturer/getcomment?page=1&rows=20',{article_id},'POST')
+//获取留言
+export const getComment=(page,article_id)=>{
+  return ajax(BASE + `/lecturer/getcomment?page=${page}&rows=10`,{article_id},'POST')
 }
 
 //评论接口

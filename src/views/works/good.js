@@ -5,14 +5,11 @@ import { withRouter } from "react-router-dom";
 
 
 function Good(props) {
-   console.log('===========================');
-  console.log(props);
   let { goodNum, good, user, dispatch, id, goodId } = props;
   
   let { history } = props;
   // 类似于派生属性
   let [goodCount, setGoodCount] = useState(parseInt(goodNum));
-  console.log(goodCount)
   useEffect(() => {
     dispatch(getGood(id));
     setGoodCount(goodNum)

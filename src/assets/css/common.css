@@ -487,3 +487,12 @@ div .newsCenter {
 .miiaov_zan span:nth-of-type(2).good {
   color: red;
 }
+.goMore {
+  position: absolute;
+  right: 0;
+  width: 100px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  background: yellow;
+}
