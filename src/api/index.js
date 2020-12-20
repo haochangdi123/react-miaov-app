@@ -53,13 +53,13 @@ export const isGood=(article_id)=>{
 }
 
 //点赞接口
-export const Good=(article_id)=>{
+export const goGood=(article_id)=>{
   return ajax(BASE + '/lecturer/good',{article_id},'POST')
 }
 
 //取消点赞接口
 export const cancelGood=(goodid,article_id)=>{
-  return ajax(BASE + '/lecturer/good',{goodid,article_id},'POST')
+  return ajax(BASE + '/lecturer/cancelgood',{goodid,article_id},'POST')
 }
 
 //验证码图片   了避免缓存使用时加时间戳

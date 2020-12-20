@@ -1,6 +1,9 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
+import Skeleton from '../../component/skeleton'
 import getWork from  '../../store/action/getWork'
+
+import Main from './main'
 
 function Work(props) {
     let { data, loading, dispatch, match } = props
@@ -16,8 +19,13 @@ function Work(props) {
         }
     }, [])
     return (
-        <div>
-            work
+        <div >
+            {
+                loading
+                    ? <Skeleton />
+                    : <Main data={data} />
+            }
+           
         </div>
     )
 }
